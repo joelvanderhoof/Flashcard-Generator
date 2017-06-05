@@ -1,6 +1,8 @@
 // This file should define a Node module that exports a constructor for creating cloze-deletion flashcards, e.g.: module.exports = ClozeCard;
 // The constructor should accept two arguments: text and cloze.
 var ClozeCard = function(text, cloze) {
+    
+    if (this instanceof ClozeCard) {
     // The constructed object should have a cloze property that contains only the cloze-deleted portion of the text.
     this.cloze = cloze;
 
@@ -15,6 +17,9 @@ var ClozeCard = function(text, cloze) {
 
     if (isInText != true) {
         throw '"' + cloze + '"' + " does not appear in " + '"' + text + '"';
+    }
+    } else {
+        return new ClozeCard(text, cloze);
     }
 }
 
